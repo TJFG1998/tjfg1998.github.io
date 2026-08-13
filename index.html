@@ -1,50 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-    }
-
-    .card {
-      text-align: center;
-      padding: 4rem 5rem;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    }
-
-    h1 {
-      margin: 0 0 0.75rem;
-      font-size: clamp(3rem, 8vw, 6rem);
-      letter-spacing: -0.05em;
-    }
-
-    p {
-      margin: 0;
-      font-size: 1.2rem;
-      opacity: 0.85;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiagovski</title>
+<meta name="description" content="Site oficial do Tiagovski — criador de conteúdo português. Encontra as redes sociais, códigos de parceiros, giveaways exclusivos e muito mais.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="card">
-    <h1>Hello, World! 👋</h1>
-    <p>Welcome to my beautiful little webpage.</p>
-  </main>
+<main class="wrapper">
+
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <section class="profile">
+    <a id="avatar-link" class="avatar-ring" href="#">
+      <span class="avatar" id="avatar">TV</span>
+    </a>
+
+    <ul class="socials" id="socials"></ul>
+
+    <div class="profile-text">
+      <p class="profile-name" id="profile-name"></p>
+      <p class="profile-disclaimer" id="profile-disclaimer"></p>
+    </div>
+  </section>
+
+  <section class="giveaway">
+    <div class="giveaway-card">
+      <div class="giveaway-header">
+        <div>
+          <span class="live-badge">LIVE<span class="live-dot"></span></span>
+          <h2 class="giveaway-title" id="giveaway-title"></h2>
+          <p class="giveaway-desc" id="giveaway-desc"></p>
+        </div>
+        <a class="giveaway-link" id="giveaway-link" href="#">Ver Giveaways →</a>
+      </div>
+    </div>
+
+    <div class="ticker-box">
+      <div class="ticker-mask">
+        <div class="ticker-track" id="ticker-track"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners">
+    <div class="partners-grid" id="partners-grid"></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-divider"></div>
+
+    <div class="footer-top">
+      <span class="badge-safe"><span class="dot-pulse"></span><span id="footer-badge"></span></span>
+      <p class="footer-text" id="footer-text"></p>
+    </div>
+
+    <div class="help-links" id="help-links"></div>
+
+    <div class="footer-bottom">
+      <p class="footer-disclaimer" id="footer-disclaimer"></p>
+      <div class="footer-meta">
+        <span class="meta-18">18+</span>
+        <span>|</span>
+        <span>T&amp;C</span>
+        <span>|</span>
+        <span id="footer-sitename"></span>
+        <span>|</span>
+        <span class="meta-version" id="footer-version"></span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
