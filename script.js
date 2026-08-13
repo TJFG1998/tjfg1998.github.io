@@ -1,21 +1,27 @@
 
 var content_data = {
+  "theme": {
+    "backgroundColor": "#121214",
+    "gridColor": "rgba(255,255,255,0.15)",
+    "gridSize": "40px"
+  },
   "profile": {
-    "name": "Tiagovski555",
+    "name": "ShangMing",
     "avatarText": "TV",
-    "avatarLink": "https://www.instagram.com/tiagovski555",
+    "avatarImage": "avatar.jpg",
+    "avatarLink": "https://www.instagram.com/ShangMing",
     "disclaimer": "Este site destina-se apenas a maiores de 18 anos. Todo o conteúdo apresentado, incluindo giveaways, parcerias e códigos, destina-se exclusivamente a fins de entretenimento. Não incentivo apostas ou qualquer forma de jogo. Joga sempre de forma consciente e responsável."
   },
   "socials": [
-    { "name": "YouTube",   "icon": "youtube",   "url": "https://www.youtube.com/@Tiagovski555?sub_confirmation=1", "color": "#FF0000" },
+    { "name": "YouTube",   "icon": "youtube",   "url": "https://www.youtube.com/@ShangMing?sub_confirmation=1", "color": "#FF0000" },
     { "name": "Clips",     "icon": "youtube",   "url": "https://www.youtube.com/@VSKI555yt?sub_confirmation=1",   "color": "#FF0000" },
-    { "name": "Twitch",    "icon": "twitch",    "url": "https://www.twitch.tv/tiagovski555yt",                    "color": "#9146FF" },
-    { "name": "Instagram", "icon": "instagram", "url": "https://www.instagram.com/tiagovski555",                  "color": "#E1306C" },
+    { "name": "Twitch",    "icon": "twitch",    "url": "https://www.twitch.tv/ShangMingyt",                    "color": "#9146FF" },
+    { "name": "Instagram", "icon": "instagram", "url": "https://www.instagram.com/ShangMing",                  "color": "#E1306C" },
     { "name": "Discord",   "icon": "discord",   "url": "https://discord.gg/tiagovski",                            "color": "#5865F2" },
     { "name": "OffSet",    "icon": "discord",   "url": "https://discord.gg/offsetrp",                             "color": "#5865F2" },
-    { "name": "TikTok",    "icon": "tiktok",    "url": "https://www.tiktok.com/@tiagovski555yt",                  "color": "#00F2EA" },
-    { "name": "Twitter",   "icon": "twitter",   "url": "https://x.com/tiagovski555",                              "color": "#1DA1F2" },
-    { "name": "Facebook",  "icon": "facebook",  "url": "https://www.facebook.com/Tiagovski555",                   "color": "#1876D0" }
+    { "name": "TikTok",    "icon": "tiktok",    "url": "https://www.tiktok.com/@ShangMingyt",                  "color": "#00F2EA" },
+    { "name": "Twitter",   "icon": "twitter",   "url": "https://x.com/ShangMing",                              "color": "#1DA1F2" },
+    { "name": "Facebook",  "icon": "facebook",  "url": "https://www.facebook.com/ShangMing",                   "color": "#1876D0" }
   ],
   "giveaway": {
     "title": "GIVEAWAYS",
@@ -146,11 +152,31 @@ function el(tag, attrs = {}, html) {
   return node;
 }
 
+function renderTheme(theme) {
+  if (!theme) return;
+  document.body.style.backgroundColor = theme.backgroundColor;
+  const grid = document.querySelector('.bg-grid');
+  grid.style.backgroundImage = `linear-gradient(${theme.gridColor} 1px, transparent 1px), linear-gradient(90deg, ${theme.gridColor} 1px, transparent 1px)`;
+  grid.style.backgroundSize = `${theme.gridSize} ${theme.gridSize}`;
+}
+
 function renderProfile(profile) {
   document.getElementById('profile-name').textContent = profile.name;
   document.getElementById('profile-disclaimer').textContent = profile.disclaimer;
-  document.getElementById('avatar').textContent = profile.avatarText;
   document.getElementById('avatar-link').href = profile.avatarLink;
+
+  const avatar = document.getElementById('avatar');
+  if (profile.avatarImage) {
+    avatar.textContent = '';
+    const img = el('img', { src: profile.avatarImage, alt: profile.name, class: 'avatar-img' });
+    img.addEventListener('error', () => {
+      img.remove();
+      avatar.textContent = profile.avatarText;
+    });
+    avatar.appendChild(img);
+  } else {
+    avatar.textContent = profile.avatarText;
+  }
 }
 
 function renderSocials(socials) {
@@ -268,6 +294,7 @@ function renderFooter(footer, siteName) {
 async function init() {
   const data = content_data
 
+  renderTheme(data.theme);
   renderProfile(data.profile);
   renderSocials(data.socials);
   renderGiveaway(data.giveaway);
